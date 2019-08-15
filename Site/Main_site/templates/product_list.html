@@ -1,0 +1,67 @@
+{% extends "home_page.html" %}
+{% block content %}
+
+
+<html lang="en">
+
+<head>
+    <title>Cartoon Glass Work</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+
+
+<link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+</head>
+
+
+<!--- Site Content --->
+
+<div class="shadow p-3 bg-white rounded" style="min-height: 100vh;">
+    <!-- Possibly move outside container? -->
+    {% if is_paginated %}
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a></li>
+        {% endif %}
+
+        {% for page_num in page_obj.paginator.page_range %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_num }}">
+                {{ page_num }}
+            </a></li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    <div class="row">
+    {% if object_list.exists %}
+        {% for obj in object_list %}
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-3 ">
+
+                <a href="{{ obj.get_url }}">
+                    <p class="price">${{ obj.price }}</p>
+                    <img class="img-thumbnail" style="width:35vw; height:30vh;" src="{{ obj.image.url }}">
+                    <h3 class="title">{{ obj.title }}</h3>
+                </a>
+
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+{% else %}
+<div class="container">
+<div class="d-flex justify-content-center" style="margin-top: 25%;">
+  <div class="jumbotron my-auto">
+    <h1 class="font-weight-light"> Hmm... seems like theres no products right now. </h1>
+    <div class="d-flex justify-content-center" >
+    <p1 class="font-weight-light"> Check back later for awesome deals.</p1>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'home_page.html' %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+        <title>Cartoon Glass Work</title>
+        <meta charset="utf-8" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                crossorigin="anonymous">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+        <div class="shadow p-3 mb-5 bg-white rounded" style="min-height: 50vh;">
+
+                <!--Main layout-->
+                <main class="mt-1 pt-2">
+                        <div class="container dark-grey-text mt-5">
+
+                                <!--Grid row-->
+                                <div class="row wow fadeIn">
+
+                                        <!--Grid column-->
+                                        <div class="col-md-12 mb-6">
+
+                                                <img src="{{ object.image.url }}"
+                                                        class="img-fluid" style="min-width:60vw; max-height:70vh;">
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                        <!--Grid column-->
+                                        <div class="col-md-6 mb-6">
+
+                                                <!--Content-->
+                                                <div class="p-4">
+
+                                                        <p class="lead">
+                                                                <p class="lead font-weight-bold">{{ object.title }}</p>
+
+                                                        </p>
+                                                        <br></br>
+                                                        <span>${{ object.price }}</span>
+                                                        <td>{% include 'snippets/cartbuttons.html' with product=object cart=cart%}
+                                                        </td>
+
+
+                                                        <br></br>
+                                                        <hr class="my-2"></hr>
+                                                        <p class="lead"> Description..</p>
+                                                        <p>{{ object.description }}</p>
+                                                        <p class="lead"> Height: {{ object.height}} </p>
+                                                        <p class="lead"> Length: {{ object.length }} </p>
+
+
+
+
+                                                        <!-- Default input -->
+
+
+
+
+                                                </div>
+                                                <!--Content-->
+
+                                        </div>
+                                        <!--Grid column-->
+
+                                </div>
+                                <!--Grid row-->
+
+                                <hr>
+
+                                <!--Grid row-->
+                                <div class="row d-flex justify-content-center wow fadeIn">
+
+
+                                </div>
+                </main>
+        </div>
+        <!--Main layout-->
+</body>
+
+</html>
+{% endblock  %}
